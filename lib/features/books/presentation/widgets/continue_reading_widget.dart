@@ -40,7 +40,6 @@ class ContinueReadingWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(12),
                 child: Row(
                   children: [
-                    // Mini Cover
                     Container(
                       width: 70,
                       height: 100,
@@ -77,7 +76,7 @@ class ContinueReadingWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           LinearProgressIndicator(
-                            value: 0.65, // Fake progress
+                            value: 0.65,
                             backgroundColor: Colors.grey[200],
                             borderRadius: BorderRadius.circular(4),
                             color: Theme.of(context).colorScheme.primary,

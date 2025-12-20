@@ -81,7 +81,6 @@ class _FeaturedBooksWidgetState extends State<FeaturedBooksWidget> {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            // Image Placeholder (or NetworkImage)
             Hero(
               tag: heroTag,
               child: Container(
@@ -99,7 +98,6 @@ class _FeaturedBooksWidgetState extends State<FeaturedBooksWidget> {
                     : null,
               ),
             ),
-            // Gradient Overlay
             Positioned(
               bottom: 0,
               left: 0,

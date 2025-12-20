@@ -11,7 +11,6 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Watch Providers
     final featuredAsyncValue = ref.watch(featuredBooksProvider);
     final allBooksAsyncValue = ref.watch(booksProvider('fiction'));
 
@@ -45,7 +44,6 @@ class HomePage extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
-            // Featured Section
             featuredAsyncValue.when(
               data: (books) {
                 if (books.isEmpty) return const SizedBox.shrink();
@@ -57,13 +55,8 @@ class HomePage extends ConsumerWidget {
 
             const SizedBox(height: 24),
 
-            // Continue Reading (Static for now as API doesn't track this)
-            // We can keep dummy data or hide it if we want pure dynamic
-            // But user liked "Continue Reading", so I'll keep it static/dummy for "Visual consistency"
-            // or perhaps pass a subset of fetched books.
+            const SizedBox(height: 24),
 
-            // For now, let's keep it visible even if static data is needed,
-            // or reusing fetched books to simulate "Continue Reading"
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
@@ -86,7 +79,8 @@ class HomePage extends ConsumerWidget {
 
             const SizedBox(height: 24),
 
-            // All Books
+            const SizedBox(height: 24),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
@@ -106,7 +100,7 @@ class HomePage extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 10),
-            // Grid
+            const SizedBox(height: 10),
             allBooksAsyncValue.when(
               data: (books) => AllBooksGrid(books: books),
               loading: () => const Center(child: CircularProgressIndicator()),

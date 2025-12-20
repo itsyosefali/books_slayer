@@ -16,7 +16,6 @@ class BookDetailsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
 
-    // Watch favorites to see if this book is in the list
     final favorites = ref.watch(favoritesProvider);
     final isFav = favorites.any((b) => b.id == book.id);
 
@@ -61,10 +60,8 @@ class BookDetailsPage extends ConsumerWidget {
         padding: EdgeInsets.zero,
         child: Column(
           children: [
-            // Header with Cover
             _buildHeader(context, theme),
 
-            // Content
             Transform.translate(
               offset: const Offset(0, -40),
               child: Container(
@@ -89,7 +86,6 @@ class BookDetailsPage extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Title & Author
                     Text(
                       book.title,
                       style: theme.textTheme.headlineMedium?.copyWith(
@@ -108,12 +104,10 @@ class BookDetailsPage extends ConsumerWidget {
 
                     const SizedBox(height: 20),
 
-                    // Stats Row
                     _buildStatsRow(context),
 
                     const SizedBox(height: 20),
 
-                    // Tags / Subjects
                     if (book.subjects.isNotEmpty) ...[
                       Text(
                         "Tags",
@@ -126,7 +120,6 @@ class BookDetailsPage extends ConsumerWidget {
                         spacing: 8,
                         runSpacing: 8,
                         children: book.subjects.take(5).map((subject) {
-                          // Clean up subject string (often "Science Fiction -- History")
                           final label = subject.split('--').last.trim();
                           return Chip(
                             label: Text(
@@ -142,7 +135,6 @@ class BookDetailsPage extends ConsumerWidget {
                       const SizedBox(height: 20),
                     ],
 
-                    // Description
                     Text(
                       "Description",
                       style: theme.textTheme.titleLarge?.copyWith(
@@ -152,9 +144,7 @@ class BookDetailsPage extends ConsumerWidget {
                     const SizedBox(height: 10),
                     Text(
                       book.subjects.isNotEmpty
-                          ? book.subjects.join(
-                              ', ',
-                            ) // Fallback as Gutendex uses subjects
+                          ? book.subjects.join(', ')
                           : (book.description ?? "No description available."),
                       style: theme.textTheme.bodyLarge?.copyWith(
                         height: 1.6,
@@ -164,7 +154,6 @@ class BookDetailsPage extends ConsumerWidget {
 
                     const SizedBox(height: 30),
 
-                    // Buttons
                     Row(
                       children: [
                         Expanded(
@@ -192,7 +181,7 @@ class BookDetailsPage extends ConsumerWidget {
                         const SizedBox(width: 16),
                         Expanded(
                           child: OutlinedButton.icon(
-                            onPressed: () {}, // Edit Action
+                            onPressed: () {},
                             icon: const Icon(Icons.edit),
                             label: const Text("Edit"),
                             style: OutlinedButton.styleFrom(
@@ -219,7 +208,6 @@ class BookDetailsPage extends ConsumerWidget {
   Widget _buildHeader(BuildContext context, ThemeData theme) {
     return Stack(
       children: [
-        // Blurred Background
         Container(
           height: 400,
           width: double.infinity,
@@ -249,7 +237,6 @@ class BookDetailsPage extends ConsumerWidget {
             ),
           ),
         ),
-        // Hero Image
         Positioned(
           bottom: 60,
           left: 0,

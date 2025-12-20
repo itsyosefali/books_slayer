@@ -31,7 +31,6 @@ class AllBooksGrid extends StatelessWidget {
   }
 
   Widget _buildBookItem(BuildContext context, Book book, int index) {
-    // Staggered height simulation
     final double height = index.isEven ? 250 : 200;
 
     return Material(
